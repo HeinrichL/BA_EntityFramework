@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 
 namespace KursKomponente.DataAccessLayer.Repository
 {
@@ -34,14 +33,12 @@ namespace KursKomponente.DataAccessLayer.Repository
             return ps.GetAll<Kurs>();
         }
 
-        public List<Kurs> GetKurseByVeransaltungszeit(int monat, int jahr)
+        public List<Kurs> GetKurseByVeranstaltungszeit(int monat, int jahr)
         {
-            //return (from kurse in ps.Query<Kurs>()
-            //        where kurse.Veranstaltungszeit.StartZeitpunkt.Month == monat
-            //              && kurse.Veranstaltungszeit.StartZeitpunkt.Year == jahr
-            //        select kurse).ToList();
-            return GetAllKurse().Where(k => k.Veranstaltungszeit.StartZeitpunkt.Month == monat &&
-            k.Veranstaltungszeit.StartZeitpunkt.Year == jahr).ToList();
+            return (from kurse in ps.Query<Kurs>()
+                    where kurse.Veranstaltungszeit.StartZeitpunkt.Month == monat
+                          && kurse.Veranstaltungszeit.StartZeitpunkt.Year == jahr
+                    select kurse).ToList();
         }
 
         public void DeleteKurs(Kurs kurs)

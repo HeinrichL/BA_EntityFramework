@@ -1,17 +1,18 @@
-﻿//using System;
+﻿using System;
 
-//namespace KursKomponente.DataAccessLayer.Datatypes
-//{
-//    [Serializable]
-//    public struct VeranstaltungszeitTyp
-//    {
-//        public DateTime StartZeitpunkt { get; }
-//        public DateTime EndZeitpunkt { get; }
+namespace KursKomponente.DataAccessLayer.Datatypes
+{
+    public class VeranstaltungszeitTyp
+    {
+        public DateTime StartZeitpunkt { get; private set; }
+        public DateTime EndZeitpunkt { get; private set; }
 
-//        public VeranstaltungszeitTyp(DateTime start, DateTime end)
-//        {
-//            StartZeitpunkt = start;
-//            EndZeitpunkt = end;
-//        }
-//    }
-//}
+        public VeranstaltungszeitTyp(DateTime start, DateTime end)
+        {
+            StartZeitpunkt = start;
+            EndZeitpunkt = end;
+        }
+
+        private VeranstaltungszeitTyp() { }
+    }
+}

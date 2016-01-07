@@ -6,18 +6,17 @@ using System.Data.Entity.Core;
 using System.Diagnostics;
 using System.Linq;
 using Common;
-using PersistenceService._1___Implementation;
 using System.Data.Entity.Infrastructure;
 
 namespace PersistenceService
 {
     public class EFPersistenceService : IPersistenceService, ITransactionService
     {
-        private readonly KundenverwaltungModelContainer _context;
+        private readonly KundenverwaltungContext _context;
 
         public EFPersistenceService()
         {
-            _context = new KundenverwaltungModelContainer(DatabaseConfig.ConnString);
+            _context = new KundenverwaltungContext();
         }
 
         public T Save<T>(T entity) where T : class

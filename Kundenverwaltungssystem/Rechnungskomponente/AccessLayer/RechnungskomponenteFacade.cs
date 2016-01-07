@@ -2,10 +2,10 @@
 using Common;
 using KursKomponente.AccessLayer;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 using Rechnungskomponente.BusinessLogicLayer;
 using Rechnungskomponente.DataAccessLayer;
 using Rechnungskomponente.DataAccessLayer.Entities;
+using Rechnungskomponente.DataAccessLayer.Datatypes;
 
 namespace Rechnungskomponente.AccessLayer
 {

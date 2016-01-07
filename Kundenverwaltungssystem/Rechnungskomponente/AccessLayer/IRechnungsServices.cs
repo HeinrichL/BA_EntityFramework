@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using PersistenceService._1___Implementation;
 using Rechnungskomponente.DataAccessLayer.Entities;
+using Rechnungskomponente.DataAccessLayer.Datatypes;
 
 namespace Rechnungskomponente.AccessLayer
 {

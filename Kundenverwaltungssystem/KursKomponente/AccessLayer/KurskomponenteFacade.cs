@@ -8,7 +8,6 @@ using KursKomponente.DataAccessLayer;
 using KursKomponente.DataAccessLayer.Repository;
 using MitarbeiterKomponente.AccessLayer;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 
 namespace KursKomponente.AccessLayer
 {
@@ -56,7 +55,7 @@ namespace KursKomponente.AccessLayer
             Check.Argument(monat > 0 && monat <= 12, "Ungültiger Monat angegeben");
             Check.Argument(jahr > 0 && DateTime.MinValue.Year <= DateTime.MaxValue.Year, "Ungültiges Jahr angegeben");
 
-            return kursRepo.GetKurseByVeransaltungszeit(monat, jahr);
+            return kursRepo.GetKurseByVeranstaltungszeit(monat, jahr);
         }
 
         public Kurs UpdateKurs(Kurs kurs)

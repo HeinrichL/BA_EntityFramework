@@ -2,79 +2,85 @@
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Linq;
-//using Kundenkomponente.DataAccessLayer.Entities;
+using Kundenkomponente.DataAccessLayer.Entities;
 using KursKomponente.DataAccessLayer;
-using PersistenceService._1___Implementation;
+using Rechnungskomponente.DataAccessLayer.Datatypes;
 
 namespace Rechnungskomponente.DataAccessLayer.Entities
 {
-    //public class Rechnung
-    //{
-    //    public virtual int Rechnungsnummer { get; set; }
-    //    public virtual Kunde Kunde { get; set; }
-    //    public virtual AbrechnungsZeitraumTyp AbrechnungsZeitraum { get; set; }
-    //    public virtual bool Bezahlt { get; set; }
-    //    public virtual List<Rechnungsposition> Rechnungspositionen { get; set; }
+    public class Rechnung
+    {
+        public virtual int Rechnungsnummer { get; set; }
+        public virtual Kunde Kunde { get; set; }
+        public virtual AbrechnungsZeitraumTyp AbrechnungsZeitraum { get; set; }
+        public virtual bool Bezahlt { get; set; }
+        public virtual List<Rechnungsposition> Rechnungspositionen { get; set; }
 
-    //    public override bool Equals(object obj)
-    //    {
-    //        if (obj == null) return false;
-    //        if (obj == this) return true;
-    //        if (typeof(Rechnung) != obj.GetType()) return false;
+        public Rechnung()
+        {
+            Rechnungspositionen = new List<Rechnungsposition>();
+        }
 
-    //        Rechnung r = (Rechnung)obj;
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (obj == this) return true;
+            if (typeof(Rechnung) != obj.GetType()) return false;
 
-    //        return Rechnungsnummer == r.Rechnungsnummer &&
-    //               Equals(Kunde, r.Kunde) &&
-    //               Equals(AbrechnungsZeitraum, r.AbrechnungsZeitraum) &&
-    //               Bezahlt == r.Bezahlt &&
-    //               Rechnungspositionen.SequenceEqual(r.Rechnungspositionen);
-    //    }
-    //}
+            Rechnung r = (Rechnung)obj;
 
-    //public class Rechnungsposition
-    //{
-    //    public virtual int Rechnungspositionsnummer { get; set; }
-    //    public virtual decimal Kosten { get; set; }
-    //    public virtual Kurs Kurs { get; set; }
+            return Rechnungsnummer == r.Rechnungsnummer &&
+                   Equals(Kunde, r.Kunde) &&
+                   Equals(AbrechnungsZeitraum, r.AbrechnungsZeitraum) &&
+                   Bezahlt == r.Bezahlt &&
+                   Rechnungspositionen.SequenceEqual(r.Rechnungspositionen);
+        }
+    }
 
-    //    public override bool Equals(object obj)
-    //    {
-    //        if (obj == null) return false;
-    //        if (obj == this) return true;
-    //        if (typeof(Rechnungsposition) != obj.GetType()) return false;
+    public class Rechnungsposition
+    {
+        public virtual int Rechnungspositionsnummer { get; set; }
+        public virtual decimal Kosten { get; set; }
+        public virtual Kurs Kurs { get; set; }
 
-    //        Rechnungsposition r = (Rechnungsposition)obj;
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (obj == this) return true;
+            if (typeof(Rechnungsposition) != obj.GetType()) return false;
 
-    //        return Rechnungspositionsnummer == r.Rechnungspositionsnummer &&
-    //               Kosten == r.Kosten &&
-    //               Equals(Kurs, r.Kurs);
-    //    }
-    //}
+            Rechnungsposition r = (Rechnungsposition)obj;
 
-    //public class RechnungMap : EntityTypeConfiguration<Rechnung>
-    //{
-    //    public RechnungMap()
-    //    {
-    //        HasKey(x => x.Rechnungsnummer);
+            return Rechnungspositionsnummer == r.Rechnungspositionsnummer &&
+                   Kosten == r.Kosten &&
+                   Equals(Kurs, r.Kurs);
+        }
+    }
 
-    //        Property(x => x.AbrechnungsZeitraum);
-    //        Property(x => x.Bezahlt);
+    public class RechnungMap : EntityTypeConfiguration<Rechnung>
+    {
+        public RechnungMap()
+        {
+            HasKey(x => x.Rechnungsnummer);
 
-    //        HasRequired(x => x.Kunde);
-    //        HasMany(x => x.Rechnungspositionen);
-    //    }
-    //}
+            Property(x => x.AbrechnungsZeitraum.Jahr);
+            Property(x => x.AbrechnungsZeitraum.Monat);
+            Property(x => x.Bezahlt);
 
-    //public class RechnungspositionMap : EntityTypeConfiguration<Rechnungsposition>
-    //{
-    //    public RechnungspositionMap()
-    //    {
-    //        HasKey(x => x.Rechnungspositionsnummer);
+            HasRequired(x => x.Kunde);
+            HasMany(x => x.Rechnungspositionen).WithRequired().WillCascadeOnDelete();
+        }
+    }
 
-    //        Property(x => x.Kosten);
+    public class RechnungspositionMap : EntityTypeConfiguration<Rechnungsposition>
+    {
+        public RechnungspositionMap()
+        {
+            HasKey(x => x.Rechnungspositionsnummer);
 
-    //        HasRequired(x => x.Kurs);
-    //    }
-    //}
+            Property(x => x.Kosten);
+
+            HasRequired(x => x.Kurs);
+        }
+    }
 }

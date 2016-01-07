@@ -5,8 +5,9 @@ using Kundenkomponente.Accesslayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersistenceService;
 using MitarbeiterKomponente.AccessLayer;
-//using MitarbeiterKomponente.DataAccessLayer.Entities;
-using PersistenceService._1___Implementation;
+using MitarbeiterKomponente.DataAccessLayer.Entities;
+using Kundenkomponente.DataAccessLayer.Entities;
+using Kundenkomponente.DataAccessLayer.Datatypes;
 
 namespace KundenkomponenteTest
 {

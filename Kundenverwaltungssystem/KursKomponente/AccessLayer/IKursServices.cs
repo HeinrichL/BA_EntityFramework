@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using KursKomponente.DataAccessLayer;
-using PersistenceService._1___Implementation;
 
 namespace KursKomponente.AccessLayer
 {

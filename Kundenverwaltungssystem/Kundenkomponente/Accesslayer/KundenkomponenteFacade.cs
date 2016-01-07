@@ -5,7 +5,8 @@ using Kundenkomponente.DataAccessLayer.Repository;
 using MitarbeiterKomponente.AccessLayer;
 //using MitarbeiterKomponente.DataAccessLayer.Entities;
 using PersistenceService;
-using PersistenceService._1___Implementation;
+using Kundenkomponente.DataAccessLayer.Entities;
+using MitarbeiterKomponente.DataAccessLayer.Entities;
 
 namespace Kundenkomponente.Accesslayer
 {

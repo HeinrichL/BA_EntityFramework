@@ -6,9 +6,12 @@ using KursKomponente.AccessLayer;
 using KursKomponente.AccessLayer.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MitarbeiterKomponente.AccessLayer;
-//using MitarbeiterKomponente.DataAccessLayer.Entities;
+using MitarbeiterKomponente.DataAccessLayer.Entities;
 using PersistenceService;
-using PersistenceService._1___Implementation;
+using KursKomponente.DataAccessLayer;
+using Kundenkomponente.DataAccessLayer.Entities;
+using Kundenkomponente.DataAccessLayer.Datatypes;
+using KursKomponente.DataAccessLayer.Datatypes;
 
 namespace KurskomponenteTest
 {

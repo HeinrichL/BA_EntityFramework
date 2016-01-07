@@ -1,8 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MitarbeiterKomponente.AccessLayer;
-//using MitarbeiterKomponente.DataAccessLayer.Entities;
+using MitarbeiterKomponente.DataAccessLayer.Entities;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 
 namespace MitarbeiterkomponenteTest
 {

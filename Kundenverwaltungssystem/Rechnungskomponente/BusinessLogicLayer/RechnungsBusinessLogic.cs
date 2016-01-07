@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using KursKomponente.AccessLayer;
 using KursKomponente.DataAccessLayer;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 using Rechnungskomponente.DataAccessLayer;
 using Rechnungskomponente.DataAccessLayer.Entities;
+using Kundenkomponente.DataAccessLayer.Entities;
+using Rechnungskomponente.DataAccessLayer.Datatypes;
 
 namespace Rechnungskomponente.BusinessLogicLayer
 {

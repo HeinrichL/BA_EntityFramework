@@ -1,8 +1,7 @@
 ﻿using Common;
-//using MitarbeiterKomponente.DataAccessLayer.Entities;
+using MitarbeiterKomponente.DataAccessLayer.Entities;
 using MitarbeiterKomponente.DataAccessLayer.Repository;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 
 namespace MitarbeiterKomponente.AccessLayer
 {

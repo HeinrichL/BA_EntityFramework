@@ -2,7 +2,6 @@
 using System.Linq;
 using Kundenkomponente.DataAccessLayer.Entities;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 
 namespace Kundenkomponente.DataAccessLayer.Repository
 {

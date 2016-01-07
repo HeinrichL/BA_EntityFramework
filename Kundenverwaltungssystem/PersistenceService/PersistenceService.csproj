@@ -59,78 +59,12 @@
   <ItemGroup>
     <Compile Include="0 - Interfaces\IPersistenceService.cs" />
     <Compile Include="0 - Interfaces\ITransactionService.cs" />
-    <Compile Include="1 - Implementation\AbrechnungsZeitraumTyp.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\AdresseTyp.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\DataTypes\AbrechnungsZeitraumTyp.cs" />
-    <Compile Include="1 - Implementation\DataTypes\AdresseTyp.cs" />
-    <Compile Include="1 - Implementation\DataTypes\EmailAdresseTyp.cs" />
-    <Compile Include="1 - Implementation\DataTypes\VeranstaltungszeitTyp.cs" />
     <Compile Include="1 - Implementation\EFPersistenceService.cs" />
-    <Compile Include="1 - Implementation\EmailAdresseTyp.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\Kunde.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\Kundenstatus.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="1 - Implementation\KundenverwaltungContext.cs" />
-    <Compile Include="1 - Implementation\KundenverwaltungModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KundenverwaltungModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\KundenverwaltungModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\KundenverwaltungModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KundenverwaltungModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\KundenverwaltungModelContainer.cs" />
-    <Compile Include="1 - Implementation\Kurs.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\Kursstatus.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\Mitarbeiter.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\Rechnung.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\Rechnungsposition.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\Rezeptionist.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\Trainer.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="1 - Implementation\VeranstaltungszeitTyp.cs">
-      <DependentUpon>KundenverwaltungModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="1 - Implementation\KundenverwaltungModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KundenverwaltungModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="1 - Implementation\KundenverwaltungModel.edmx.diagram">
-      <DependentUpon>KundenverwaltungModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -138,19 +72,6 @@
       <Project>{1aba9fd9-d560-40fe-b151-4f5a767bd771}</Project>
       <Name>Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="1 - Implementation\KundenverwaltungModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>KundenverwaltungModel.Context.cs</LastGenOutput>
-      <DependentUpon>KundenverwaltungModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="1 - Implementation\KundenverwaltungModel.edmx.sql" />
-    <Content Include="1 - Implementation\KundenverwaltungModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>KundenverwaltungModel.cs</LastGenOutput>
-      <DependentUpon>KundenverwaltungModel.edmx</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

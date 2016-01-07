@@ -1,6 +1,8 @@
 ﻿using System;
 using AnwendungskernFassade;
-using PersistenceService._1___Implementation;
+using MitarbeiterKomponente.DataAccessLayer.Entities;
+using Kundenkomponente.DataAccessLayer.Entities;
+using Kundenkomponente.DataAccessLayer.Datatypes;
 
 namespace ConsoleApplication1
 {
@@ -28,7 +30,7 @@ namespace ConsoleApplication1
                 Telefonnummer = "123456"
             };
             anwendungskern.CreateKunde(k, r.ID);
-
+            Console.WriteLine("adsasd");
             Console.ReadLine();
         }
     }

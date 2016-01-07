@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 using Rechnungskomponente.DataAccessLayer.Entities;
+using Rechnungskomponente.DataAccessLayer.Datatypes;
 
 namespace Rechnungskomponente.DataAccessLayer
 {
@@ -33,7 +33,7 @@ namespace Rechnungskomponente.DataAccessLayer
         public List<Rechnung> GetRechnungenByAbrechnungszeitraum(AbrechnungsZeitraumTyp zeitraum)
         {
             return (from rechnungen in ps.Query<Rechnung>()
-                    where rechnungen.AbrechnungsZeitraum.Equals(zeitraum)
+                    where rechnungen.AbrechnungsZeitraum.Jahr == zeitraum.Jahr && rechnungen.AbrechnungsZeitraum.Monat == zeitraum.Monat
                     select rechnungen).ToList();
         }
     }

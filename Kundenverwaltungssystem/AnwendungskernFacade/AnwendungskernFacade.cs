@@ -4,8 +4,12 @@ using KursKomponente.AccessLayer;
 using MitarbeiterKomponente.AccessLayer;
 //using MitarbeiterKomponente.DataAccessLayer.Entities;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 using Rechnungskomponente.AccessLayer;
+using MitarbeiterKomponente.DataAccessLayer.Entities;
+using Kundenkomponente.DataAccessLayer.Entities;
+using KursKomponente.DataAccessLayer;
+using Rechnungskomponente.DataAccessLayer.Entities;
+using Rechnungskomponente.DataAccessLayer.Datatypes;
 
 namespace AnwendungskernFassade
 {

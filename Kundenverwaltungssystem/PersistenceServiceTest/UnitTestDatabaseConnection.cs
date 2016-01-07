@@ -5,20 +5,19 @@ using System.Linq;
 using Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 
 namespace PersistenceServiceTest
 {
     [TestClass]
     public class UnitTestDatabaseConnection
     {
-        private static KundenverwaltungModelContainer _session;
+        private static KundenverwaltungContext _session;
 
         [ClassInitialize]
         public static void Init(TestContext context)
         {
             File.Delete(DatabaseConfig.ConnStringSQLite);
-            _session = new KundenverwaltungModelContainer(DatabaseConfig.ConnString);
+            _session = new KundenverwaltungContext();
             _session.Database.ExecuteSqlCommand("IF OBJECT_ID('dbo.Testtable') IS NOT NULL DROP TABLE Testtable");
             _session.Database.ExecuteSqlCommand("CREATE TABLE Testtable (ID int not null, Bla nvarchar(200))");
         }

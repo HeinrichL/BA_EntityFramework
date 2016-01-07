@@ -5,7 +5,7 @@ using KursKomponente.DataAccessLayer;
 using KursKomponente.DataAccessLayer.Repository;
 using PersistenceService;
 using System.Linq;
-using PersistenceService._1___Implementation;
+using Kundenkomponente.DataAccessLayer.Entities;
 
 namespace KursKomponente.BusinessLogicLayer
 {

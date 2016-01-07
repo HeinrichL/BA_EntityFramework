@@ -5,10 +5,15 @@ using Kundenkomponente.Accesslayer;
 using KursKomponente.AccessLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MitarbeiterKomponente.AccessLayer;
-//using MitarbeiterKomponente.DataAccessLayer.Entities;
+using MitarbeiterKomponente.DataAccessLayer.Entities;
 using PersistenceService;
-using PersistenceService._1___Implementation;
 using Rechnungskomponente.AccessLayer;
+using Kundenkomponente.DataAccessLayer.Entities;
+using KursKomponente.DataAccessLayer;
+using Kundenkomponente.DataAccessLayer.Datatypes;
+using KursKomponente.DataAccessLayer.Datatypes;
+using Rechnungskomponente.DataAccessLayer.Entities;
+using Rechnungskomponente.DataAccessLayer.Datatypes;
 
 namespace RechnungskomponenteTest
 {
