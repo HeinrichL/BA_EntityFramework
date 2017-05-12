@@ -65,13 +65,7 @@ namespace KursKomponente.DataAccessLayer
             Property(x => x.Titel);
             Property(x => x.Beschreibung);
             Property(x => x.MaximaleTeilnehmeranzahl);
-            HasMany(x => x.Teilnehmer).WithMany();//.WillCascadeOnDelete(false);
-                //.Map(m =>
-                //{
-                //    m.MapLeftKey("Teilnehmer");
-                //    m.MapRightKey("IDKurs");
-                //    m.ToTable("KundenKurse");
-                //});
+            HasMany(x => x.Teilnehmer).WithMany();
             Property(x => x.Veranstaltungszeit.StartZeitpunkt);
             Property(x => x.Veranstaltungszeit.EndZeitpunkt);
             Property(x => x.Kursstatus);

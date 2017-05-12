@@ -10,6 +10,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+            Console.Write(typeof(string).Assembly.ImageRuntimeVersion);
+
             AnwendungskernFacade anwendungskern = new AnwendungskernFacade();
 
             Rezeptionist r = new Rezeptionist()

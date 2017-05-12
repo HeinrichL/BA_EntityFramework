@@ -24,9 +24,7 @@ namespace Kundenkomponente.DataAccessLayer.Entities
         public virtual Kundenstatus Kundenstatus { get; set; }
         public virtual Rezeptionist AngelegtVon { get; set; }
 
-        public Kunde() {
-            //Adresse = new AdresseTyp();
-        }
+        public Kunde() { }
 
         public override bool Equals(object obj)
         {

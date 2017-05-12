@@ -15,7 +15,7 @@ namespace PersistenceService
             // Entwicklung
             Database.SetInitializer(new DropCreateDatabaseAlways<KundenverwaltungContext>());
 
-            //Configuration.
+            Configuration.LazyLoadingEnabled = true;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,8 +32,7 @@ namespace PersistenceService
                 .Where(t =>
                       t.BaseType != null &&
                       t.BaseType.IsGenericType &&
-                      (t.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>) ||
-                      t.BaseType.GetGenericTypeDefinition() == typeof(ComplexTypeConfiguration<>)));
+                      (t.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>)));
                 types.ToList().ForEach(t =>
                 {
                     dynamic configurationInstance = Activator.CreateInstance(t);

@@ -119,6 +119,15 @@ namespace RechnungskomponenteTest
             ps.Delete(t);
         }
 
+        [TestCleanup]
+        public void After()
+        {
+            foreach (var rechnung in ps.GetAll<Rechnung>())
+            {
+                ps.Delete(rechnung);
+            }
+        }
+
         [TestMethod]
         public void TestMethodErstelleRechnungen()
         {
@@ -171,8 +180,6 @@ namespace RechnungskomponenteTest
             //CollectionAssert.AreEqual(expected, rechnungen.ToList());
             Assert.AreEqual(2, rechnungen.Count);
             Assert.AreEqual(3, rechnungen.Sum(r => r.Rechnungspositionen.Count));
-
-            ps.DeleteRange(rechnungen);
         }
 
         [TestMethod]
@@ -183,8 +190,6 @@ namespace RechnungskomponenteTest
             Rechnung re = rechnungsServices.FindRechnungById(rechnungen[0].Rechnungsnummer);
 
             Assert.AreEqual(re, rechnungen[0]);
-
-            ps.DeleteRange(rechnungen);
         }
 
         [TestMethod]
@@ -195,7 +200,6 @@ namespace RechnungskomponenteTest
             List<Rechnung> re = rechnungsServices.GetAlleRechnungen();
 
             Assert.AreEqual(2, rechnungen.Count);
-            ps.DeleteRange(rechnungen);
         }
 
         [TestMethod]
@@ -205,11 +209,10 @@ namespace RechnungskomponenteTest
             kursServices.UpdateKurs(kurs2);
 
             List<Rechnung> rechnungen = rechnungsServices.ErstelleRechnungen();
-
+            List<Rechnung> res = rechnungsServices.GetRechnungByAbrechnungsZeitraum(
+                new AbrechnungsZeitraumTyp(DateTime.Today.Month, DateTime.Today.Year));
             //Nur 1 Kurs wird abgerechnet
             Assert.IsTrue(rechnungen.Count == 1);
-
-            ps.DeleteRange(rechnungen);
         }
     }
 }

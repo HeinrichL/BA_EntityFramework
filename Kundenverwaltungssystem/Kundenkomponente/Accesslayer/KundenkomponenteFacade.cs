@@ -3,7 +3,6 @@ using System.Linq;
 using Common;
 using Kundenkomponente.DataAccessLayer.Repository;
 using MitarbeiterKomponente.AccessLayer;
-//using MitarbeiterKomponente.DataAccessLayer.Entities;
 using PersistenceService;
 using Kundenkomponente.DataAccessLayer.Entities;
 using MitarbeiterKomponente.DataAccessLayer.Entities;

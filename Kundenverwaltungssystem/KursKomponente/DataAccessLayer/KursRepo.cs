@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PersistenceService;
+using System.Data.Entity;
 
 namespace KursKomponente.DataAccessLayer.Repository
 {
@@ -38,7 +39,7 @@ namespace KursKomponente.DataAccessLayer.Repository
             return (from kurse in ps.Query<Kurs>()
                     where kurse.Veranstaltungszeit.StartZeitpunkt.Month == monat
                           && kurse.Veranstaltungszeit.StartZeitpunkt.Year == jahr
-                    select kurse).ToList();
+                    select kurse).Include(x => x.Teilnehmer).ToList();
         }
 
         public void DeleteKurs(Kurs kurs)

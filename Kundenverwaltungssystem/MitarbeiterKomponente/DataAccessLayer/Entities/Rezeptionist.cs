@@ -29,6 +29,8 @@ namespace MitarbeiterKomponente.DataAccessLayer.Entities
 
             Property(x => x.Vorname);
             Property(x => x.Nachname);
+
+            ToTable("Rezeptionisten");
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Linq;
 using Common;
 using System.Data.Entity.Infrastructure;
+using EntityFramework.BulkInsert.Extensions;
+using System.Data.Entity.Core.Objects;
 
 namespace PersistenceService
 {
@@ -21,7 +23,7 @@ namespace PersistenceService
 
         public T Save<T>(T entity) where T : class
         {
-            _context.Set<T>().Add(entity);//.SaveOrUpdate(entity);
+            _context.Set<T>().Add(entity);
             _context.SaveChanges();
             return entity;
         }
@@ -40,12 +42,9 @@ namespace PersistenceService
 
         public List<T> SaveAll<T>(List<T> entities) where T : class
         {
-            using (var trans = _context.Database.BeginTransaction())
-            {
-                _context.Set<T>().AddRange(entities);
-                _context.SaveChanges();
-                trans.Commit();
-            }
+            _context.Set<T>().AddRange(entities);
+            _context.SaveChanges();
+
             return entities;
         }
 
@@ -62,31 +61,18 @@ namespace PersistenceService
 
         public void Delete<T>(T entity) where T : class
         {
-            _context.Entry(entity).State = EntityState.Deleted;
-            var oc = ((IObjectContextAdapter)_context).ObjectContext;
-            oc.DeleteObject(entity);
-            //_context.Set<T>().Remove(entity);
+            _context.Set<T>().Remove(entity);
             _context.SaveChanges();
-        }
-
-        public void DeleteRange<T>(List<T> entities) where T : class
-        {
-            using (var trans = _context.Database.BeginTransaction())
-            {
-                _context.Set<T>().RemoveRange(entities);
-                trans.Commit();
-            }
-        }
-
-        public void DeleteAll<T>() where T : class
-        {
-            string name = typeof(T).Name;
-            //_context.Database.ExecuteSqlCommand("TRUNCATE TABLE " + name);
         }
 
         public IQueryable<T> Query<T>() where T : class
         {
             return _context.Set<T>();
+        }
+
+        public ObjectQuery<T> Query<T>(string query, params ObjectParameter[] parameters) where T : class
+        {
+            return ((IObjectContextAdapter)_context).ObjectContext.CreateQuery<T>(query, parameters);
         }
 
         public void ExecuteInTransaction(Action action)
@@ -98,12 +84,12 @@ namespace PersistenceService
                     action.Invoke();
                     transaction.Commit();
                 }
-                catch(OptimisticConcurrencyException e)
+                catch (DBConcurrencyException e)
                 {
                     transaction.Rollback();
                     throw e;
                 }
-                
+
             }
         }
 
@@ -119,7 +105,6 @@ namespace PersistenceService
                 }
                 catch (DBConcurrencyException e)
                 {
-                    Debug.WriteLine("{0}", e.Message);
                     transaction.Rollback();
                     throw e;
                 }

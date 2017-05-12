@@ -5,6 +5,8 @@ namespace MitarbeiterKomponente.DataAccessLayer.Entities
 {
     public class Trainer : Mitarbeiter
     {
+        public int TrainerAttribute { get; set; }
+
         public Trainer() { }
 
         public override bool Equals(object obj)
@@ -29,6 +31,8 @@ namespace MitarbeiterKomponente.DataAccessLayer.Entities
 
             Property(x => x.Vorname);
             Property(x => x.Nachname);
+
+            ToTable("Trainer");
         }
     }
 }

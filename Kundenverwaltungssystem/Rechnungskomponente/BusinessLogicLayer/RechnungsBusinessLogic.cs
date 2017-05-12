@@ -29,48 +29,51 @@ namespace Rechnungskomponente.BusinessLogicLayer
             int year = DateTime.Now.Year;
             List<Rechnung> rechnungen = new List<Rechnung>();
             Dictionary<Kunde, List<Kurs>> kundenKurse = new Dictionary<Kunde, List<Kurs>>();
-            var kurse = ks.GetKurseByVeranstaltungszeit(monat, year);
-            foreach (var kurs in kurse)
+            return ts.ExecuteInTransaction(() =>
             {
-                foreach (var teilnehmer in kurs.Teilnehmer)
+                var kurse = ks.GetKurseByVeranstaltungszeit(monat, year);
+                foreach (var kurs in kurse)
                 {
-                    if (!kundenKurse.ContainsKey(teilnehmer))
+                    foreach (var teilnehmer in kurs.Teilnehmer)
                     {
-                        var listKurse = new List<Kurs>();
-                        listKurse.Add(kurs);
-                        kundenKurse.Add(teilnehmer, listKurse);
-                    }
-                    else
-                    {
-                        kundenKurse[teilnehmer].Add(kurs);
+                        if (!kundenKurse.ContainsKey(teilnehmer))
+                        {
+                            var listKurse = new List<Kurs>();
+                            listKurse.Add(kurs);
+                            kundenKurse.Add(teilnehmer, listKurse);
+                        }
+                        else
+                        {
+                            kundenKurse[teilnehmer].Add(kurs);
+                        }
                     }
                 }
-            }
 
-            foreach (var pair in kundenKurse)
-            {
-                List<Rechnungsposition> positionen = new List<Rechnungsposition>();
-
-                foreach (var kurs in pair.Value)
+                foreach (var pair in kundenKurse)
                 {
-                    Rechnungsposition position = new Rechnungsposition()
+                    List<Rechnungsposition> positionen = new List<Rechnungsposition>();
+
+                    foreach (var kurs in pair.Value)
                     {
-                        Kurs = kurs
+                        Rechnungsposition position = new Rechnungsposition()
+                        {
+                            Kurs = kurs
+                        };
+                        positionen.Add(position);
+                    }
+
+                    Rechnung r = new Rechnung()
+                    {
+                        Kunde = pair.Key,
+                        AbrechnungsZeitraum =
+                                         new AbrechnungsZeitraumTyp(monat, year),
+                        Bezahlt = false,
+                        Rechnungspositionen = positionen
                     };
-                    positionen.Add(position);
+                    rechnungen.Add(r);
                 }
-
-                Rechnung r = new Rechnung()
-                {
-                    Kunde = pair.Key,
-                    AbrechnungsZeitraum =
-                                     new AbrechnungsZeitraumTyp(monat, year),
-                    Bezahlt = false,
-                    Rechnungspositionen = positionen
-                };
-                rechnungen.Add(r);
-            }
-            return repo.SaveAll(rechnungen);
+                return repo.SaveAll(rechnungen);
+            });
         }
     }
 }

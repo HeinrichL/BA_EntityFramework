@@ -1,4 +1,6 @@
-﻿namespace MitarbeiterKomponente.DataAccessLayer.Entities
+﻿using System.Data.Entity.ModelConfiguration;
+
+namespace MitarbeiterKomponente.DataAccessLayer.Entities
 {
     public class Mitarbeiter
     {
